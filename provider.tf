@@ -7,11 +7,13 @@ terraform {
     }
   }
 
-  backend "azurerm" {}
+  backend "azurerm" {
+    use_msi = true
+  }
 }
 
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  use_msi = true
+  use_oidc = true
 }
