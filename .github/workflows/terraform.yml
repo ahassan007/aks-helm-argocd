@@ -28,6 +28,10 @@ jobs:
     # make the chosen env available everywhere
     env:
       TF_ENV: ${{ github.event.inputs.environment }}
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      ARM_USE_AZUREAD: true
 
     steps:
       - name: Checkout
@@ -53,6 +57,7 @@ jobs:
             -backend-config="storage_account_name=${{ secrets.STATE_STORAGE_ACCOUNT }}" \
             -backend-config="container_name=${{ secrets.STATE_STORAGE_CONTAINER }}" \
             -backend-config="key=${{ env.TF_ENV }}tfstate.tfstate"
+            -backend-config=""
           
 
       - name: Terraform Plan
