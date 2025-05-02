@@ -47,9 +47,13 @@ jobs:
           terraform_version: 1.4.6
 
       - name: Terraform Init
-        # each env has its own tfstate under `<env>/terraform.tfstate`
-        run: terraform init \
-                -backend-config="key=${{ env.TF_ENV }}tfstate.tfstate"
+        run: |
+          terraform init \
+            -backend-config="resource_group_name=${{ secrets.STATE_RESOURCE_GROUP }}" \
+            -backend-config="storage_account_name=${{ secrets.STATE_STORAGE_ACCOUNT }}" \
+            -backend-config="container_name=${{ secrets.STATE_STORAGE_CONTAINER }}" \
+            -backend-config="key=${{ env.TF_ENV }}tfstate.tfstate"
+          
 
       - name: Terraform Plan
         # picks up env/<env>.tfvars and writes plan to tfplan-<env>
