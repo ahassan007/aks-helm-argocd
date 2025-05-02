@@ -1,1 +1,1 @@
-# aks-helm-argocd
+# aks-argocd
