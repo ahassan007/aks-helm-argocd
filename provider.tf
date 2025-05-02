@@ -6,13 +6,12 @@ terraform {
       version = "=4.1.0"
     }
   }
+
+  backend "azurerm" {}
 }
 
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
-  client_id = var.client_id
-  subscription_id = var.subscription_id
-  tenant_id = var.tenant_id
   use_msi = true
 }
