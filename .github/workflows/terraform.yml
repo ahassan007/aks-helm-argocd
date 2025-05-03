@@ -7,7 +7,7 @@ on:
       environment:
         description: 'Which environment to deploy'
         required: true
-        default: staging
+        default: dev
         type: choice
         options:
           - dev
@@ -61,9 +61,10 @@ jobs:
 
       - name: Terraform Plan
         # picks up env/<env>.tfvars and writes plan to tfplan-<env>
-        run: terraform plan \
-               -var-file="env/${{ env.TF_ENV }}.tfvars" \
-               -out="tfplan-${{ env.TF_ENV }}"
+        run: |
+          terraform plan \
+            -var-file="env/${{ env.TF_ENV }}.tfvars" \
+            -out="tfplan-${{ env.TF_ENV }}"
 
       - name: Terraform Apply
         if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
