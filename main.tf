@@ -20,7 +20,7 @@ resource "azurerm_kubernetes_cluster" "agent" {
 
   identity {
     type = each.value.identity.type
-    identity_ids = [data.azurerm_user_assigned_identity.this[0].id]
+    identity_ids = [data.azurerm_user_assigned_identity.this["managed_identity"].id]
   }
 }
 
