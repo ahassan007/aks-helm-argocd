@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "aks_rg" {
-  name     = "aks_devops_agent"
+  name     = "aks_argocd"
   location = "UK South"
 }
 
