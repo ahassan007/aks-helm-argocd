@@ -21,7 +21,7 @@ kubernetes_cluster = {
     default_node_pool   = {
       name       = "agent"
       node_count = 1
-      vm_size    = "Standard_B2_v2"
+      vm_size    = "standard_b2s"
     }
     identity            = {
       type         = "UserAssigned"
