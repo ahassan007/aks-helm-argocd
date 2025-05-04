@@ -61,7 +61,7 @@ jobs:
             -out="tfplan-${{ env.TF_ENV }}"
 
       - name: Terraform Apply
-        if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         # only auto-apply for manual runs or on main branch
         run: terraform apply -auto-approve "tfplan-${{ env.TF_ENV }}"
 
