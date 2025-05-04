@@ -9,14 +9,14 @@ data_look_prerequisites = {
 resource_group = {
   dev = {
     name     = "rg-aks-dev"
-    location = "East US"
+    location = "uksouth"
   }
 }
 
 kubernetes_cluster = {
   dev = {
     name                = "aks-argocd-dev"
-    location            = "East US"
+    location            = "uksouth"
     dns_prefix          = "argocd-dev"
     default_node_pool   = {
       name       = "agent"

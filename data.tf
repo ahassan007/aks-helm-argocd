@@ -6,7 +6,3 @@ data "azurerm_user_assigned_identity" "this" {
   resource_group_name = each.value.resource_group_name
   
 }
-
-output "mi" {
-  value = data.azurerm_user_assigned_identity.this
-}
