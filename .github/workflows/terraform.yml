@@ -61,7 +61,7 @@ jobs:
             -out="tfplan-${{ env.TF_ENV }}"
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/dev'
         # only auto-apply for manual runs or on main branch
         run: terraform apply -auto-approve "tfplan-${{ env.TF_ENV }}"
 
